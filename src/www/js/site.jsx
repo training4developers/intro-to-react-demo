@@ -5,18 +5,35 @@ const
 	ReactDOM = require("react-dom");
 	
 let
+	Item = React.createClass({
+		render: function() {
+			return <li>{this.props.children}</li>;
+		}
+	}),
 	ItemList = React.createClass({
+
+		getInitialState: function() {
+			return {
+				items: this.props.items
+			};
+		},
 
 		render: function() {
 			
-			let items = this.props.items.map(function(item) {
-				return <li>{item}</li>;
-			});
+			setTimeout(function() {
+				let items = this.state.items;
+				items.push("Item 4");
+				this.setState({
+					items: items
+				});
+			}.bind(this), 2000);
 			
 			return <div>
 				<h1>{this.props.header}</h1>
 				<ul>
-					{items}
+					{this.state.items.map(function(item) {
+						return <Item>{item}</Item>;
+					})}
 				</ul>
 			</div>;
 		}

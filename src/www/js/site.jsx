@@ -8,10 +8,10 @@ let
 	HelloWorld = React.createClass({
 
 		render: function() {
-			return React.createElement("h1", null, "Hello World!");
+			return <h1>Hello World!!</h1>;
 		}
 		
 	});
 	
-ReactDOM.render(React.createElement(HelloWorld),
+ReactDOM.render(<HelloWorld />,
 	document.querySelector("[class='container']"));
